@@ -16,7 +16,9 @@ function CacheDB(namespace) {
         await fs.writeFileSync("./database/"+this.namespace + ".json", JSON.stringify(data));
     }
     this.init = async function () {
-
+        if (!fs.existsSync("./database")) {
+            await fs.mkdirSync("./database");
+        }
         if (!fs.existsSync("./database/"+this.namespace + ".json")) {
             await fs.writeFileSync("./database/"+this.namespace + ".json", "{}");
         }

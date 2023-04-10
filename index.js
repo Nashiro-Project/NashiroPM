@@ -5,8 +5,16 @@ const bot = new Telegraf(conf.token)
 const config = new CacheDB('config')
 const userdata = new CacheDB('userdata')
 userdata.init()
-config.ini
+config.init()
 bot.command('init', async(ctx) => {
+    if (ctx.message.from.id != conf.adminid) {
+        ctx.reply('你不是管理员咪！无权init咪！')
+        return
+    }
+    if(!ctx.chat.is_forum){
+        ctx.reply('已开启Topic群组中使用init喵！')
+        return
+    }
     ctx.reply('已设置，群组id:' + ctx.chat.id)
     await config.set('groupid', ctx.chat.id)
     await config.set("mode", "forward")

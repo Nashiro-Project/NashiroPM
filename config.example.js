@@ -1,3 +1,4 @@
 export default {
-    token:""
+    token:"",
+    adminid: 0
 }
