@@ -1,4 +1,5 @@
 import ReadableTime from './time.js'
+import pkg from './package.json' assert { type: "json" }
 let handlelock = false
 function nashiroPM(bot, CacheDB, conf) {
     const config = new CacheDB('config')
@@ -18,7 +19,7 @@ function nashiroPM(bot, CacheDB, conf) {
         await config.set("mode", "forward")
         await config.set("uuid", (Math.random() * 100000000000000000).toString(16))
         //welcome
-        await config.set("welcome", "ww!这是利用nashiroPM项目创建的私聊机器人喵！你可以直接与此机器人对话，它会将你的消息转发到主人手中喵！")
+        await config.set("welcome", "ww!这是利用nashiroPM项目创建的私聊机器人喵！你可以直接与此机器人对话，它会将你的消息转发到主人手中喵！\n https://github.com/Nashiro-Project/NashiroPM")
         ctx.reply('已设置，群组id:' + ctx.chat.id)
         ctx.telegram.editGeneralForumTopic(ctx.chat.id, "PMbot 控制台"+(await config.get("uuid"))).then(async (res) => {
             ctx.telegram.editGeneralForumTopic(ctx.chat.id, "PMbot 控制台")
@@ -291,13 +292,16 @@ function nashiroPM(bot, CacheDB, conf) {
                             tgconsole("已切换blocknotice，目前被屏蔽用户将" + (await config.get("blocknotice") ? "" : "不") + "会收到通知")
                             break
                         case "/help":
-                            tgconsole('这些命令适用于控制台中：\n' +
+                            tgconsole('nashiroPM v' + pkg.version + '\n' +
+                                '这些命令适用于控制台中：\n' +
                                 '/mode [forward|MarkdownV2|text] 切换转发模式\n' +
                                 '/welcome [welcome] 设置欢迎语\n' +
                                 '/delall 清空所有用户，注意这也会将所有聊天记录和用户状态一并清除\n' +
                                 '/blocknotice 切换屏蔽通知\n' +
-                                '/help 查看帮助\n'
-                                , {
+                                '/help 查看帮助\n'+
+                                '适用于与用户对话中的命令，请在与用户对话中使用/help\n',
+        
+                                {
                                     parse_mode: 'markdownV2'
                                 })
                             break

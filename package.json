@@ -1,17 +1,30 @@
 {
-    "type": "module",
-    "dependencies": {
-        "@cfworker/web": "^1.12.5",
-        "cfworker-middleware-telegraf": "^2.0.2",
-        "telegraf": "^4.12.2"
-    },
-    "scripts": {
-        "start:node": "node platfm/node.js",
-        "build:cfworker": "webpack --config cfw.webpack.config.js"
-    },
-    "devDependencies": {
-        "node-polyfill-webpack-plugin": "^2.0.1",
-        "webpack": "^5.78.0",
-        "webpack-cli": "^5.0.1"
-    }
+  "type": "module",
+  "dependencies": {
+    "telegraf": "^4.12.2"
+  },
+  "scripts": {
+    "start:node": "node platfm/node.js",
+    "start:pm2": "pm2 start platfm/node.js --name NashiroPM",
+    "stop:pm2": "pm2 stop NashiroPM",
+    "restart:pm2": "pm2 restart NashiroPM"
+  },
+  "name": "nashiropm",
+  "description": "一个基于频道功能便于管理的私聊机器人，喵喵喵！",
+  "version": "0.0.2",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nashiro-Project/NashiroPM.git"
+  },
+  "keywords": [
+    "pmbot"
+  ],
+  "author": "nashiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nashiro-Project/NashiroPM/issues"
+  },
+  "homepage": "https://github.com/Nashiro-Project/NashiroPM#readme"
 }

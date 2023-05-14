@@ -14,9 +14,25 @@
 2. 将频道的`话题`功能开启咪。
 3. 下载或克隆本仓库，将`config.example.json`改为`.config.json`，并将机器人token和操作管理员id填入。nya～
 4. 运行`npm install`安装依赖喵!
-5. 运行`npm start`启动机器人喵!
+5. 运行`npm run start:node`启动机器人喵!
 6. 在群组中发送`/init`，机器人会自动完成初始化咪！
 7. 在群组控制台/对话中发送`/help`，机器人会自动回复帮助咪！
+8. 如果都没有问题，请Ctrl+C停止机器人，
+运行以下命令来安装pm2，并以守护进程的方式运行机器人喵！
+
+```bash
+npm install pm2 -g
+npm run start:pm2
+```
+
+重启和停止机器人的命令如下：
+
+```bash
+npm run restart:pm2
+npm run stop:pm2
+```
+
+
 
 接下来，所有人与机器人的私聊都会以独立的话题被转发到群组中喵。nya，你可以直接在对应的话题下对话，机器人会自动将消息转发给对方喵。
 
